@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="40dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_circle_dark_gray"
+                android:padding="14dp"
+                android:src="@drawable/ic_back_arrow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Detail Mobil"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/btnBack"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/btnBack" />
+
+            <ImageView
+                android:id="@+id/bgMainContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/bg_container"
+                app:layout_constraintTop_toBottomOf="@id/btnBack" />
+
+            <TextView
+                android:id="@+id/tvNamaMobil"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:text="BMW M4 Coupe F82"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintEnd_toEndOf="@id/bgMainContainer"
+                app:layout_constraintStart_toStartOf="@id/bgMainContainer"
+                app:layout_constraintTop_toTopOf="@id/bgMainContainer" />
+
+            <ImageView
+                android:id="@+id/imgMobil"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/bmw_m4_merah"
+                app:layout_constraintEnd_toEndOf="@id/bgMainContainer"
+                app:layout_constraintStart_toStartOf="@id/bgMainContainer"
+                app:layout_constraintTop_toBottomOf="@id/tvNamaMobil" />
+
+            <TextView
+                android:id="@+id/labelSpec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:text="Spesifikasi Mobil"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/bgMainContainer"
+                app:layout_constraintTop_toBottomOf="@id/imgMobil" />
+
+            <GridLayout
+                android:id="@+id/gridSpec"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="10dp"
+                android:columnCount="2"
+                app:layout_constraintEnd_toEndOf="@id/bgMainContainer"
+                app:layout_constraintStart_toStartOf="@id/bgMainContainer"
+                app:layout_constraintTop_toBottomOf="@id/labelSpec">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_rect_spec"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Warna" android:textColor="#BDBDBD" android:textSize="12sp" />
+                        <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_alignParentEnd="true" android:src="@drawable/ic_palette" android:alpha="0.7"/>
+                    </RelativeLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Merah" android:textColor="@color/white" android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_rect_spec"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Kapasitas Mesin" android:textColor="#BDBDBD" android:textSize="10sp" />
+                        <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_alignParentEnd="true" android:src="@drawable/ic_engine" android:alpha="0.7"/>
+                    </RelativeLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="3.0 Liter" android:textColor="@color/white" android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_rect_spec"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Power" android:textColor="#BDBDBD" android:textSize="12sp" />
+                        <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_alignParentEnd="true" android:src="@drawable/ic_speed" android:alpha="0.7"/>
+                    </RelativeLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="450 HP" android:textColor="@color/white" android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_rect_spec"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tipe Mesin" android:textColor="#BDBDBD" android:textSize="12sp" />
+                        <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_alignParentEnd="true" android:src="@drawable/ic_engine" android:alpha="0.7"/>
+                    </RelativeLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="I6 Inline-6" android:textColor="@color/white" android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_rect_spec"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Kapasitas Orang" android:textColor="#BDBDBD" android:textSize="10sp" />
+                        <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_alignParentEnd="true" android:src="@drawable/ic_people" android:alpha="0.7"/>
+                    </RelativeLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="2 Orang" android:textColor="@color/white" android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_rect_spec"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Penyimpanan" android:textColor="#BDBDBD" android:textSize="10sp" />
+                        <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_alignParentEnd="true" android:src="@drawable/ic_bag" android:alpha="0.7"/>
+                    </RelativeLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="1 Unit koper" android:textColor="@color/white" android:textStyle="bold" />
+                </LinearLayout>
+            </GridLayout>
+
+            <ImageView
+                android:id="@+id/bgPriceContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-20dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/bg_price"
+                app:layout_constraintTop_toBottomOf="@id/bgMainContainer" />
+
+            <LinearLayout
+                android:id="@+id/layoutHarga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="@id/bgPriceContainer"
+                app:layout_constraintTop_toTopOf="@id/bgPriceContainer">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Harga"
+                    android:textColor="#D1D1D1"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/tvHargaMobil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp1,375,000,000"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnPesan"
+                android:layout_width="340dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/bg_button_yellow"
+                android:text="Pesan Sekarang"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bgPriceContainer" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
