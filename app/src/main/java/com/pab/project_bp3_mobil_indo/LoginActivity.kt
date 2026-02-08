@@ -43,51 +43,37 @@ class LoginActivity : AppCompatActivity() {
             etPassword.setSelection(etPassword.text.length)
         }
 
-        // 🔐 LOGIN
-        btnLogin.setOnClickListener {
 
+        btnLogin.setOnClickListener {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
 
             if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(
-                    this,
-                    "Email dan password wajib diisi",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(this, "Email dan password wajib diisi", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
+            // Mengambil data user dari Room Database
             val user = db.userDao().login(email, password)
 
             if (user != null) {
+                val sharedPref = getSharedPreferences("USER_APP", MODE_PRIVATE)
+                val editor = sharedPref.edit()
 
+                editor.putBoolean("is_login", true)
+                editor.putString("EMAIL_KEY", user.email)
+                editor.putString("NAMA_KEY", user.nama)
+                editor.apply()
 
-                getSharedPreferences("app_pref", MODE_PRIVATE)
-                    .edit()
-                    .putBoolean("is_login", true)
-                    .putString("login_email", user.email) // 🔑 INI KUNCI MASALAHMU
-                    .apply()
-
-                Toast.makeText(this, "Login berhasil", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Login berhasil. Halo ${user.nama}!", Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(this, HomeActivity::class.java)
-                intent.flags =
-                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
 
-
-                overridePendingTransition(
-                    R.anim.fade_in,
-                    R.anim.fade_out
-                )
-
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
             } else {
-                Toast.makeText(
-                    this,
-                    "Email atau password salah",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(this, "Email atau password salah", Toast.LENGTH_SHORT).show()
             }
         }
 

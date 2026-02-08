@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="0dp"
+    android:layout_height="100dp"
+    android:layout_weight="1"
+    android:layout_margin="4dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/bg_upload_placeholder">
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_plus"
+        android:contentDescription="Tambah Foto"
+        app:tint="#828282" />
+</LinearLayout>

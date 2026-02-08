@@ -27,31 +27,44 @@ class MobilAdapter(private var listMobil: List<Mobil>) :
     override fun onBindViewHolder(holder: MobilViewHolder, position: Int) {
         val mobil = listMobil[position]
 
-        holder.tvNama.text = mobil.namaMobil
-        holder.tvHarga.text = mobil.harga
-        holder.imgMobil.setImageResource(mobil.gambar)
+        holder.tvNama.text = mobil.namaMobil ?: "Nama tidak tersedia"
+        holder.tvHarga.text = mobil.harga ?: "Harga tidak tersedia"
+
+        // Proteksi jika gambar tidak ditemukan agar tidak crash
+        try {
+            holder.imgMobil.setImageResource(mobil.gambar)
+        } catch (e: Exception) {
+            // Jika error, pasang gambar placeholder atau biarkan kosong
+        }
 
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
 
-            val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra("NAMA_MOBIL", mobil.namaMobil)
-            intent.putExtra("HARGA_MOBIL", mobil.harga)
-            intent.putExtra("GAMBAR_MOBIL", mobil.gambar)
+            val intent = Intent(context, DetailActivity::class.java).apply {
+                putExtra("NAMA_MOBIL", mobil.namaMobil)
+                putExtra("HARGA_MOBIL", mobil.harga)
+                putExtra("GAMBAR_MOBIL", mobil.gambar)
+            }
 
             context.startActivity(intent)
 
+            // Bungkus dalam try-catch agar jika folder res/anim kosong tidak Force Close
             if (context is Activity) {
-                context.overridePendingTransition(
-                    R.anim.fade_in,
-                    R.anim.fade_out
-                )
+                try {
+                    context.overridePendingTransition(
+                        R.anim.fade_in,
+                        R.anim.fade_out
+                    )
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
             }
         }
     }
 
+    // Fungsi update data yang lebih aman
     fun updateData(newList: List<Mobil>) {
-        listMobil = newList
+        this.listMobil = newList
         notifyDataSetChanged()
     }
 

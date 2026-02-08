@@ -24,10 +24,10 @@ class SearchActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_search)
 
-        // animasi masuk activity
+
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
 
-        // Handle Window Insets
+
         val scrollview = findViewById<androidx.core.widget.NestedScrollView>(R.id.searchScroll)
         ViewCompat.setOnApplyWindowInsetsListener(scrollview) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -44,6 +44,13 @@ class SearchActivity : AppCompatActivity() {
         val btnNavHome = findViewById<ImageView>(R.id.navHome)
         btnNavHome.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        }
+
+        val btnNavSell = findViewById<ImageView>(R.id.navSell)
+        btnNavSell.setOnClickListener {
+            val intent = Intent(this, SellActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         }

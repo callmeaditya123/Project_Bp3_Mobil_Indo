@@ -27,13 +27,18 @@ class HistoryActivity : AppCompatActivity() {
 
         findViewById<ImageView>(R.id.navHome)?.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         }
 
         findViewById<ImageView>(R.id.navSearch)?.setOnClickListener {
             val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        }
+
+        findViewById<ImageView>(R.id.navSell)?.setOnClickListener {
+            val intent = Intent(this, SellActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         }

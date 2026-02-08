@@ -45,10 +45,7 @@ class ProfileActivity : AppCompatActivity() {
 
 
         findViewById<ImageView>(R.id.navHome)?.setOnClickListener {
-            startActivity(
-                Intent(this, HomeActivity::class.java)
-                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            )
+            startActivity(Intent(this, HomeActivity::class.java))
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         }
 
@@ -58,8 +55,13 @@ class ProfileActivity : AppCompatActivity() {
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         }
 
+        findViewById<ImageView>(R.id.navSell)?.setOnClickListener {
+            startActivity(Intent(this, SellActivity::class.java))
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        }
 
-        findViewById<ImageView>(R.id.btnnavHistory)?.setOnClickListener {
+
+        findViewById<ImageView>(R.id.btnNavHistory)?.setOnClickListener {
             startActivity(Intent(this, HistoryActivity::class.java))
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         }
@@ -93,8 +95,9 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun loadData() {
         val sharedPref = getSharedPreferences("USER_APP", Context.MODE_PRIVATE)
-        val nama = sharedPref.getString("NAMA_KEY", "Aditya Ramadhan")
-        val email = sharedPref.getString("EMAIL_KEY", "aditya123@gmail.com")
+        val nama = sharedPref.getString("NAMA_KEY", "User")
+        val email = sharedPref.getString("EMAIL_KEY", "user@email.com")
+
         tvNama.text = nama
         tvEmail.text = email
     }

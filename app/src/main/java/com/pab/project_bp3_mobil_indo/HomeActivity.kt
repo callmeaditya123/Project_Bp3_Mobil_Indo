@@ -22,6 +22,7 @@ class HomeActivity : AppCompatActivity() {
 
         tvNamaUserHome = findViewById(R.id.tvUserNamaHome)
 
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -30,9 +31,16 @@ class HomeActivity : AppCompatActivity() {
 
         tampilkanNama()
 
-        findViewById<ImageView>(R.id.navSearch).setOnClickListener { pindahKeSearch() }
-        findViewById<ImageView>(R.id.btnnavHistory).setOnClickListener { pindahKeHistory() }
-        findViewById<ImageView>(R.id.btnNavProfile).setOnClickListener { pindahKeProfile() }
+
+        findViewById<ImageView>(R.id.navSearch)?.setOnClickListener { pindahKeSearch() }
+        findViewById<ImageView>(R.id.navSell)?.setOnClickListener { pindahKeSell() }
+        findViewById<ImageView>(R.id.btnnavHistory)?.setOnClickListener { pindahKeHistory() }
+        findViewById<ImageView>(R.id.btnNavProfile)?.setOnClickListener { pindahKeProfile() }
+
+        findViewById<TextView>(R.id.tvLihatSemuaBrand)?.setOnClickListener { pindahKeSearch() }
+        findViewById<TextView>(R.id.tvLihatSemuaKoleksi)?.setOnClickListener { pindahKeSearch() }
+
+        setupBrandClicks()
 
         setupCarItems()
     }
@@ -44,8 +52,17 @@ class HomeActivity : AppCompatActivity() {
 
     private fun tampilkanNama() {
         val sharedPref = getSharedPreferences("USER_APP", Context.MODE_PRIVATE)
-        val namaTersimpan = sharedPref.getString("NAMA_KEY", "Aditya Ramadhan")
+        val namaTersimpan = sharedPref.getString("NAMA_KEY", "User")
         tvNamaUserHome.text = "Halo, $namaTersimpan"
+    }
+
+    private fun setupBrandClicks() {
+
+        findViewById<View>(R.id.brandBMW)?.setOnClickListener { pindahKeSearch() }
+        findViewById<View>(R.id.brandAudi)?.setOnClickListener { pindahKeSearch() }
+        findViewById<View>(R.id.brandMercy)?.setOnClickListener { pindahKeSearch() }
+        findViewById<View>(R.id.brandFerrari)?.setOnClickListener { pindahKeSearch() }
+        findViewById<View>(R.id.brandToyota)?.setOnClickListener { pindahKeSearch() }
     }
 
     private fun setupCarItems() {
@@ -53,6 +70,8 @@ class HomeActivity : AppCompatActivity() {
         itemBMW?.let {
             it.findViewById<TextView>(R.id.tvCarName).text = "BMW M4 Coupe F82"
             it.findViewById<ImageView>(R.id.imgCar).setImageResource(R.drawable.bmw)
+            // Jika ingin klik mobil langsung ke Search juga:
+            it.setOnClickListener { pindahKeSearch() }
         }
 
         val itemFerrari = findViewById<View>(R.id.itemCar2)
@@ -61,11 +80,19 @@ class HomeActivity : AppCompatActivity() {
             it.findViewById<ImageView>(R.id.imgCar).setImageResource(R.drawable.ferrari)
             it.findViewById<TextView>(R.id.tvSpeed).text = "340 KM/H"
             it.findViewById<TextView>(R.id.tvHP).text = "570 HP"
+            // Jika ingin klik mobil langsung ke Search juga:
+            it.setOnClickListener { pindahKeSearch() }
         }
     }
 
+
     private fun pindahKeSearch() {
         startActivity(Intent(this, SearchActivity::class.java))
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+    }
+
+    private fun pindahKeSell() {
+        startActivity(Intent(this, SellActivity::class.java))
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 

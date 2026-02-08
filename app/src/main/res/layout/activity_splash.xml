@@ -22,8 +22,8 @@
 
         <ImageView
             android:id="@+id/imgLogo"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/logo_mobil_indo"
             android:adjustViewBounds="true" />
@@ -32,7 +32,7 @@
             android:id="@+id/tvAppName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:text="Mobil Indo"
             android:textColor="#EDBB1D"
             android:textSize="28sp"

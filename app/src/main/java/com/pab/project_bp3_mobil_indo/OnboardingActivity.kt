@@ -20,8 +20,7 @@ class OnboardingActivity : AppCompatActivity() {
         val btnNext = findViewById<ImageButton>(R.id.btnNext)
 
         btnNext.setOnClickListener {
-
-            getSharedPreferences("app_pref", MODE_PRIVATE)
+            getSharedPreferences("USER_APP", MODE_PRIVATE)
                 .edit()
                 .putBoolean("onboarding_done", true)
                 .apply()

@@ -46,7 +46,6 @@ class EditProfileActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // SIMPAN PERMANEN KE MEMORI HP
             val sharedPref = getSharedPreferences("USER_APP", Context.MODE_PRIVATE)
             val editor = sharedPref.edit()
             editor.putString("NAMA_KEY", namaInput)
